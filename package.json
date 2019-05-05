@@ -1,6 +1,7 @@
 {
   "name": "socket-io-chat-example",
   "version": "0.0.1",
+  "main": "server.js",
   "description": "socket-io chat example",
   "dependencies": {
     "express": "^4.16.4",
