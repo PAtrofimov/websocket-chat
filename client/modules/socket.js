@@ -38,4 +38,5 @@ export class Socket {
   emitRoomChange(room) {
     this.socket.emit('change room', room);
   }
+
 }

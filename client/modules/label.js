@@ -6,4 +6,5 @@ export class Label {
   render(username) {
     this.node.innerHTML = username;
   }
+
 }

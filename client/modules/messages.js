@@ -3,15 +3,19 @@ export class Messages {
     this.node = document.querySelector(selector);
   }
 
-  append(username, message) {
-    this.node.innerHTML += `[${username}] ${message}\n`;
+  append(username, message, timestamp, me = false) {
+    if (me) {
+      this.node.innerHTML += `<strong>${timestamp} ['me'] ${message}</strong> (sent)\n`;
+    } else {
+      this.node.innerHTML += `${timestamp} [${username}] ${message}\n`;
+    }
   }
 
-  appendSystem(message) {
-    this.append('system', message);
+  appendSystem(message, timestamp) {
+    this.append("system", message, timestamp);
   }
 
   clear() {
-    this.node.innerHTML = '';
+    this.node.innerHTML = "";
   }
 }
