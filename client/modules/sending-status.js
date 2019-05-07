@@ -2,20 +2,23 @@ import {Label} from './label.js';
 
 export class SendingStatus extends Label {
   constructor(...args) {
-    super(...args);
+  super(...args);
+  this.message = '';
+  }
+
+  render() {
+    super.render(this.message);
+  }
+
+  hide() {
     this.message = '';
+    this.render();
   }
 
-  setMessage(message) {
-    this.message = message;
+  show() {
+    this.message = 'Sending ...';
+    this.render();
   }
 
-  render(message) {
-    super.render(this.getMessageSending(message));
-  }
-
-  getMessageSending(message) {
-    return this.message && message !== this.message?`${this.message} is pending ...`: '';
-  }
 
 }

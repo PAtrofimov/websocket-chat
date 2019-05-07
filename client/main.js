@@ -24,29 +24,25 @@ document.addEventListener("DOMContentLoaded", () => {
   socket.onNameAssigned((username, timestamp, usernames) => {
     userName.render(username);
     currentUser = username;
-    users.setCurrentUser(username);
-    users.setUsers(usernames);
-    users.render();
+    users.render(usernames.filter(user => user !== username));
     messages.appendSystem(`<b>${username}</b> assigned to you.`, timestamp);
   });
 
   socket.onUserJoined((username, timestamp, usernames) => {
     messages.appendSystem(`<b>${username}</b> joined.`, timestamp);
-    users.setUsers(usernames);
-    users.render();
+    users.render(usernames.filter(user => user !== username));
   });
 
-  socket.onUserLeft((username, timestamp) => {
+  socket.onUserLeft((username, timestamp, usernames) => {
     messages.appendSystem(`<b>${username}</b> left.`, timestamp);
-    users.setUsers(usernames);
-    users.render();
+    users.render(usernames.filter(user => user !== username));
   });
 
   socket.onChatMessage(({ username, message, timestamp }) => {
     setTimeout(() => {
-      if (username === currentUser) {
-        sendingStatus.render(message);
-      }
+       if (username === currentUser) {
+         sendingStatus.hide();
+       }
       messages.append(username, message, timestamp, currentUser == username);
       typingStatus.removeTypingUser(username);
     }, 1000);
@@ -57,8 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   messageForm.onSubmit(message => {
-    sendingStatus.setMessage(message);
-    sendingStatus.render();
+    sendingStatus.show();
+    messages.append(username, message, '', true, true);
     socket.emitChatMessage(message);
   });
 

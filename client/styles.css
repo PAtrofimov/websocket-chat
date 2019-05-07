@@ -91,3 +91,36 @@ button, input {
 .sending {
 background-color: yellow
 }
+
+.time {
+	font-size: xx-small;
+	color: coral;
+}
+
+.status {
+    font-size: x-small;
+}
+
+.status-pending {
+    color: orange;
+}
+
+.status-sent {
+    color: green;
+}
+
+.user-me {
+    background: lightgreen;
+}
+
+.user-system {
+    background: skyblue;
+}
+
+.user-other {
+    background: aqua;
+}
+
+.user {
+	font-size: large;
+}
