@@ -48,6 +48,7 @@ body {
 	overflow-y: scroll;
 	flex-grow: 1;
 	background: lavender;
+	padding-left: 10px
 }
 
 .scrollable-users {
@@ -110,17 +111,20 @@ background-color: yellow
 }
 
 .user-me {
-    background: lightgreen;
+    color: lightgreen;
 }
 
 .user-system {
-    background: skyblue;
+    color: skyblue;
 }
 
 .user-other {
-    background: aqua;
+    color: aqua;
 }
 
 .user {
 	font-size: large;
+	font-weight: bold;
+    font-family: serif;
+    
 }

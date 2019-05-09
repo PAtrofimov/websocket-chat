@@ -4,6 +4,7 @@ export class SendingStatus extends Label {
   constructor(...args) {
   super(...args);
   this.message = '';
+  this.id = '';
   }
 
   render() {
@@ -11,13 +12,19 @@ export class SendingStatus extends Label {
   }
 
   hide() {
+    clearInterval(this.id);
     this.message = '';
     this.render();
   }
 
   show() {
-    this.message = 'Sending ...';
-    this.render();
+    let counter = 0;
+    this.id = setInterval(() => {
+      counter++;
+      this.message = 'Sending ' + '.'.repeat(counter % 3 + 1);
+      this.render();
+    }, 100);
+   
   }
 
 

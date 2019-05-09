@@ -7,7 +7,7 @@ export class Messages {
     if (me) {
       const typeStatus = isPending ? "pending" : "sent";
       if (isPending) {
-        this.node.innerHTML += `<span class = "user user-me">[me]</span> <strong class = "message message-pending">${message}</strong> <span class="status status-${typeStatus}">${typeStatus}</span> <span class="time time-${typeStatus}"></span>\n`;
+        this.node.innerHTML += `<span class = "user user-me">me</span> <strong class = "message message-pending">${message}</strong> <span class="status status-${typeStatus}">${typeStatus}</span> <span class="time time-${typeStatus}"></span>\n`;
       } else {
         const nodesMessages = document.querySelectorAll(".message-pending");
         const nodesStatus = document.querySelectorAll(".status-pending");
@@ -27,11 +27,11 @@ export class Messages {
         });
 
         if (!isFind)
-          this.node.innerHTML = `<span class = "user user-me">[me]</span> <strong>${message}</strong> <span class="status status-${typeStatus}">${typeStatus}</span> <span class="time time-${typeStatus}">${timestamp}</span>\n`;
+          this.node.innerHTML = `<span class = "user user-me">me</span> <strong>${message}</strong> <span class="status status-${typeStatus}">${typeStatus}</span> <span class="time time-${typeStatus}">${timestamp}</span>\n`;
       }
     } else {
       const typeUser = username === "system" ? username : "other";
-      this.node.innerHTML += `<span class="user user-${typeUser}">[${username}]</span> ${message} <span class="time time-${typeUser}">${timestamp}</span>\n`;
+      this.node.innerHTML += `<span class="user user-${typeUser}">${username}</span> ${message} <span class="time time-${typeUser}">${timestamp}</span>\n`;
     }
   }
 
